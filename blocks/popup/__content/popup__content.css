@@ -1,0 +1,10 @@
+.popup__content {
+    font-family: "Inter", Arial, sans-serif;
+    margin: 34px 36px 37px;
+}
+
+@media screen and (max-width: 568px) {
+    .popup__content {
+        margin: 25px 22px;
+    }
+}

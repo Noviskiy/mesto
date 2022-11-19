@@ -1,0 +1,12 @@
+.card__hart {
+    margin: 0;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+    cursor: pointer;
+}
+
+.card__hart:hover {
+    opacity: 0.6;
+} 
+
+  
