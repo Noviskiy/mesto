@@ -3,11 +3,12 @@
     width: 24px;
     height: 24px;
     outline: 1px solid #fff;
-    background-image: url(../../../images/pen.png);
+    background-image: url(../../../images/pen.svg);
     background-size: 10px;
     background-repeat: no-repeat;
     background-position: center;
     color: #fff;
+    background-color: transparent;
 }
 
 @media screen and (max-width: 568px) {

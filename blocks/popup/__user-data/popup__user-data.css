@@ -1,20 +1,17 @@
-.popup__user-name {
+.popup__user-data {
     border: 0;
     width: 358px;
-    height: 14px;
     box-sizing: content-box;
-    border-bottom: 1px solid #000;
-    margin: 41px auto 0;
-    padding: 13px 0 13px;
+    border-bottom: 1px solid rgb(0,0,0,0.2);
+    padding-bottom: 10px;
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
 }
 
 @media screen and (max-width: 568px) {
-    .popup__user-name {
+    .popup__user-data {
         width: 238px;
         height: 14px;
-        margin: 62px auto 0;
     }
 }

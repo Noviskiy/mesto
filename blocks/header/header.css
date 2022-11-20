@@ -1,21 +1,25 @@
 .header {
     margin: 0 200px 40px;
+    border-bottom: 1px solid rgb(84,84,84,0.7);
 }
 
 @media screen and (max-width: 1124px) {
     .header {
-        margin: 0 143px 40px;
+        margin-left: 143px;
+        margin-right: 143px;
     }
 }
 
 @media screen and (max-width: 984px) {
     .header {
-        margin: 0 70px 40px;
+        margin-left: 70px;
+        margin-right: 70px;
     }
 }
 
 @media screen and (max-width: 568px) {
     .header {
-        margin: 0 0 40px;
+        margin-left: 0;
+        margin-right: 0;
     }
 }

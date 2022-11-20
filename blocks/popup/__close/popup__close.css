@@ -1,16 +1,18 @@
 .popup__close {
     cursor: pointer;
     float: right;
+    border: none;
+    background-color: transparent;
 }
 
 .popup__close:before,
 .popup__close:after {
     content: "";
     position: absolute;
-    width: 32px;
-    height: 2px;
+    width: 42px;
+    height: 4px;
     background: #fff;
-    margin: -24px 8px;
+    margin: -24px 219px;
 }
 
 .popup__close:before {
@@ -24,9 +26,8 @@
 @media screen and (max-width: 568px) {
     .popup__close:before,
     .popup__close:after {
-        width: 20px;
-        height: 2px;
-        background: #fff;
-        margin: -36px -20px;
+        width: 28px;
+        height: 3px;
+        margin: -29px 117px;
     }
 }

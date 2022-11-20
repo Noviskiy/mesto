@@ -12,8 +12,7 @@
   <body class="body">
     <div class="page">
         <header class="header">
-            <img class="header__logo" src="images/logo.png" alt="логотип сайта">
-            <div class="header__line"></div>
+            <img class="header__logo" src="images/logo.svg" alt="логотип сайта">
         </header>
 
         <main class="content page__content">
@@ -22,55 +21,43 @@
                 <img class="profile__avatar" src="images/avatar.jpg" alt="аватар">
                 <div class="profile__info">
                     <h1 class="profile__name">Жак-Ив Кусто</h1>
-                    <a class="profile__edit-button link-design" href="#"></a>
+                    <button class="profile__edit-button link-design" href="#"></button>
                     <p class="profile__job">Исследователь океана</p>
                 </div>
-                <a class="profile__add-button link-design" href="#"></a>
+                <button class="profile__add-button link-design" href="#"></button>
             </section> 
 
             <section class="cards">
-              <div class="card">
+              <article class="card">
                 <img class="card__image" src="./images/p-void-ro85WEbUoig-unsplash.jpg" alt="фото - Белое море зимой">
                 <h2 class="card__name">Белое море</h2>
-                <button class="card__hart-button">
-                  <img class="card__hart" src="images/Vector.svg" alt="лайк - сердечко" onclick="hartChange();">
-                </button>
-              </div>
-              <div class="card">
+                <button class="card__hart-button" type="submit"></button>
+              </article>
+              <article class="card">
                 <img class="card__image" src="./images/radik-sitdikov-uPx334kOgm0-unsplash.jpg" alt="фото - небольшая часовня на Соловецком архипелаге">
                 <h2 class="card__name">Соловки</h2>
-                <button class="card__hart-button">
-                  <img class="card__hart" src="images/Vector.svg" alt="лайк - сердечко" onclick="hartChange();">
-                </button>
-              </div>
-              <div class="card">
+                <button class="card__hart-button" type="submit"></button>
+              </article>
+              <article class="card">
                 <img class="card__image" src="./images/19192_original.jpg" alt="фото - космодром Плесецк">
                 <h2 class="card__name">Космодром Плесецк</h2>
-                <button class="card__hart-button">
-                  <img class="card__hart" src="images/Vector.svg" alt="лайк - сердечко" onclick="hartChange();">
-                </button>
-              </div>
-              <div class="card">
+                <button class="card__hart-button" type="submit"></button>
+              </article>
+              <article class="card">
                 <img class="card__image" src="./images/9MAAAgOf8OA-1920.jpg" alt="фото - музей Малые Корелы">
                 <h2 class="card__name">Малые Корелы</h2>
-                <button class="card__hart-button">
-                  <img class="card__hart" src="images/Vector.svg" alt="лайк - сердечко" onclick="hartChange();">
-                </button>
-              </div>
-              <div class="card">
+                <button class="card__hart-button" type="submit"></button>
+              </article>
+              <article class="card">
                 <img class="card__image" src="./images/bkBwGDlQImY.jpg" alt="фото - Нёнокса">
                 <h2 class="card__name">Нёнокса</h2>
-                <button class="card__hart-button">
-                  <img class="card__hart" src="images/Vector.svg" alt="лайк - сердечко" onclick="hartChange();">
-                </button>
-              </div>
-              <div class="card">
+                <button class="card__hart-button" type="submit"></button>
+              </article>
+              <article class="card">
                 <img class="card__image" src="./images/kargopol.jpg" alt="фото - Каргополь">
                 <h2 class="card__name">Каргополь</h2>
-                <button class="card__hart-button">
-                  <img class="card__hart" src="images/Vector.svg" alt="лайк - сердечко" onclick="hartChange();">
-                </button>
-              </div>
+                <button class="card__hart-button" type="submit"></button>
+              </article>
             </section>
         </main>
 
@@ -78,17 +65,17 @@
             <p class="footer__author">&#169; 2022. Новицкий&nbsp;Олег</p>
         </footer>
 
-        <form class="popup" id="userData">
+        <div class="popup" id="userData">
           <div class="popup__container">
-            <a class="popup__close link-design"></a>
-            <div class="popup__content">
-              <h2 class="popup__title">Редактировать профиль</h2>
-              <input type="text" class="popup__user-name" value="Жак-Ив Кусто" id="name">
-              <input type="text" class="popup__user-job" value="Исследователь океана" id="job">
+            <button class="popup__close link-design"></button>
+            <h2 class="popup__title">Редактировать профиль</h2>
+            <form class="popup__content">
+              <input type="text" class="popup__user-data" id="popupUserName" name="name" value="" placeholder="Жак-Ив Кусто">
+              <input type="text" class="popup__user-data" id="popupUserJob" name="job" value="" placeholder="Исследователь океана">
               <button type="submit" class="popup__save link-design">Сохранить</button>
-            </div>
+            </form>
           </div>
-        </form>
+        </div>
 
     </div>
     <script src="./scripts/index.js"></script>

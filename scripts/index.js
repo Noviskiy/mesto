@@ -22,46 +22,22 @@ popupOpenButtonElement.addEventListener('click', openPopup);
 popupCloseButtonElement.addEventListener('click', closePopup);
 popupElement.addEventListener('click', closePopupByClickOnOverlay);
 
-function editUserName() {
-    var text = document.querySelector('.popup__user-name');
-    var val = text.value;
-    let userName = document.querySelector('.profile__name');
-    userName.textContent = val;
-}
-
-function editUserJob() {
-    var text = document.querySelector('.popup__user-job');
-    var val = text.value;
-    let userJob = document.querySelector('.profile__job');
-    userJob.textContent = val;
-}
-
 popupSave.addEventListener('click', function () {
-    editUserName();
-    editUserJob();
+    formSubmitHandler();
     closePopup();
 });
 
-document.addEventListener('keydown', function(pressEsc) {
-    if (pressEsc.key === 'Escape') {
-        if (popupElement.classList.contains('popup_opened')) {
-            closePopup();
-        }
-    }
-});
-
 let formElement = document.querySelector('.popup__content');
-let nameInput = document.querySelector('.profile__name');
-let jobInput = document.querySelector('.profile__job');
+let nameInput = formElement.querySelector('#popupUserName');
+let jobInput = formElement.querySelector('#popupUserJob');
+let newUserName = document.querySelector('.profile__name');
+let newUserJob = document.querySelector('.profile__job');
 
-let clickCounter=0;
-let image=document.querySelector(".card__hart");
-let imgs=new Array('images/Vector.svg','images/Union.svg');
-function hartChange() {
-    clickCounter++;
-    if(clickCounter % 2 == 0) {
-        image.src=imgs[0];
-    } else {
-        image.src=imgs[1];
-    }
+function formSubmitHandler (evt) {
+    evt.preventDefault();
+    newUserName.textContent = nameInput.value;
+    newUserJob.textContent = jobInput.value;
+    closePopup();
 }
+
+formElement.addEventListener('submit', formSubmitHandler); 

@@ -4,11 +4,12 @@
     height: 50px;
     outline: 2px solid #fff;
     border-radius: 2px;
-    background-image: url(../../../images/plus.png);
+    background-image: url(../../../images/plus.svg);
     background-size: 22px;
     background-repeat: no-repeat;
     background-position: center;
     color: #fff;
+    background-color: transparent;
 }
 
 @media screen and (max-width: 1124px) {

@@ -4,5 +4,14 @@
     grid-row-start: 2;
     border: none;
     background-color: transparent;
-    width: min-content;
+    width: 22px;
+    height: 18px;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+    cursor: pointer;
+    background-image: url(../../../images/hart.svg);
 }
+
+.card__hart-button:hover {
+    opacity: 0.6;
+} 
