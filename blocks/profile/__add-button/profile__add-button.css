@@ -2,29 +2,23 @@
     margin: 0;
     width: 150px;
     height: 50px;
-    outline: 2px solid #fff;
+    border: 2px solid #fff;
     border-radius: 2px;
     background-image: url(../../../images/plus.svg);
     background-size: 22px;
     background-repeat: no-repeat;
     background-position: center;
-    color: #fff;
     background-color: transparent;
+    cursor: pointer;
 }
 
-@media screen and (max-width: 1124px) {
-    .profile__add-button {
-        width: 112.5px;
-    }
-}
-
-@media screen and (max-width: 984px) {
+@media screen and (max-width: 920px) {
     .profile__add-button {
         width: 75px;
     }
 }
 
-@media screen and (max-width: 568px) {
+@media screen and (max-width: 620px) {
     .profile__add-button {
         width: 282px;
         height: 50px;

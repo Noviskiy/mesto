@@ -1,4 +1,4 @@
-.card__hart-button {
+.card__hart-button_active {
     margin: 0;
     grid-column-start: 2;
     grid-row-start: 2;
@@ -8,10 +8,10 @@
     opacity: 1;
     transition: opacity 1s ease-in-out;
     cursor: pointer;
-    background-image: url(../../../images/hart.svg);
+    background-image: url(../../../../images/black-hart.svg);
     border: 0;
 }
 
-.card__hart-button:hover {
+.card__hart-button_active:hover {
     opacity: 0.6;
 } 

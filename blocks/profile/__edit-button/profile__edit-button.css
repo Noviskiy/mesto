@@ -9,9 +9,11 @@
     background-position: center;
     color: #fff;
     background-color: transparent;
+    border: 0;
+    cursor: pointer;
 }
 
-@media screen and (max-width: 568px) {
+@media screen and (max-width: 620px) {
     .profile__edit-button {
         width: 18px;
         height: 18px;

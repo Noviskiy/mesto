@@ -3,9 +3,10 @@
     display: flex;
     flex-direction: column;
     grid-gap: 28px;
+    width: 100%;
 }
 
-@media screen and (max-width: 568px) {
+@media screen and (max-width: 620px) {
     .popup__content {
         grid-gap: 32px;
     }
