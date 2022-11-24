@@ -5,10 +5,6 @@ const popupSave = document.querySelector('.popup__save');
 
 const hartButton = document.querySelector('.card__hart-button');
 
-const onHart = function(){
-    hartButton.classList.add('card__hart-button_active');
-}
-
 const activateHartButton = function(eve) {
     if (eve.target.classList.contains('card__hart-button_active')){
         eve.target.classList.remove('card__hart-button_active');
@@ -19,9 +15,10 @@ const activateHartButton = function(eve) {
 
 hartButton.addEventListener('click', activateHartButton);
 
-
 const openPopup = function() {
     popupElement.classList.add('popup_opened');
+    nameInput.value = newUserName.textContent;
+    jobInput.value = newUserJob.textContent;
 }
 const closePopup = function(event) {
     popupElement.classList.remove('popup_opened');
@@ -38,11 +35,6 @@ popupOpenButtonElement.addEventListener('click', openPopup);
 popupCloseButtonElement.addEventListener('click', closePopup);
 popupElement.addEventListener('click', closePopupByClickOnOverlay);
 
-popupSave.addEventListener('click', function () {
-    formSubmitHandler();
-    closePopup();
-});
-
 let formElement = document.querySelector('.popup__content');
 let nameInput = formElement.querySelector('#popupUserName');
 let jobInput = formElement.querySelector('#popupUserJob');
@@ -57,6 +49,3 @@ function formSubmitHandler (evt) {
 }
 
 formElement.addEventListener('submit', formSubmitHandler); 
-
-nameInput.value = newUserName.textContent;
-jobInput.value = newUserJob.textContent;

@@ -1,5 +1,4 @@
 .popup__container {
-    top: 193px;
     width: 358px;
     height: 330px;
     background-color: #fff;
@@ -15,7 +14,6 @@
 
 @media screen and (max-width: 620px) {
     .popup__container {
-        top: 123px;
         width: 238px;
         height: 322px;
         padding-left: 22px;
