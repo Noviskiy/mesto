@@ -106,15 +106,13 @@ closePopup(popupAddImg);
 }
 
   const popupSaveImg = popupAddCard.querySelector('#saveImg');
+  const formSaveImg = popupAddCard.querySelector('.popup__content');
   
   const saveUserImg = function(event) {  //функция обработчик события для кнопки сохранения
     event.preventDefault();
     renderCard({name: popupUserLocation.value, link: popupUserLink.value});
-    popupUserLocation.value = '';
-    popupUserLink.value = '';
     closePopup(popupAddImg);
-    // не получилось реализовать очистку через .reset(); пытался вот так
-    // formElementAdd.reset();
+    formSaveImg.reset(); //очистка формы
   }
 
   popupSaveImg.addEventListener('submit', saveUserImg);
@@ -182,5 +180,3 @@ closePopup(popupAddImg);
   initialCards.forEach((dataCard) => {
     renderCard(dataCard);
   });
-
-
