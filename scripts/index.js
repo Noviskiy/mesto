@@ -25,72 +25,84 @@ const initialCards = [
     }
   ];
 
+//ОБЩАЯ ФУНКЦИЯ ОТКРЫТИЯ ПОПАПОВ
+  const popupOpenButtonEditProfile = document.querySelector('.profile__edit-button');// кнопка открытия попапа редактирования профиля
+  const popupEditProfile = document.querySelector('#userData'); //попап редактирования профиля
+  const popupOpenButtonAddImg = document.querySelector('.profile__add-button'); // кнопка открытия попапа добавления фото
+  const popupAddImg = document.querySelector('#userImg'); //попап редактирования профиля
 
-  // РЕДАКТИРОВАНИЕ ПРОФИЛЯ
-  const popupProfile = document.querySelector('#userData'); //переменная всей формы
-  const popupCloseButtonElement = popupProfile.querySelector('.popup__close');// переменная кнопки закрытия попапа редактирования профиля
-  const popupOpenButtonElement = document.querySelector('.profile__edit-button');// переменная кнопки открытия попапа редактирования профиля
-
-  const openPopupProfile = function() {  // функция открытия попапа редактора профиля
-    popupProfile.classList.add('popup_opened'); // добавляет класс попапу редактирования профиля
-    nameInput.value = newUserName.textContent; // выводит в текстовые поля попапа значения со страницы
-    jobInput.value = newUserJob.textContent; 
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
 }
 
-const closePopupProfile = function(event) { // функция закрытия попапа редактирования профиля
-  popupProfile.classList.remove('popup_opened'); //уберает класс у попапа редактирования профиля
+popupOpenButtonEditProfile.addEventListener('click', () => {
+  openPopup(popupEditProfile);
+  nameInput.value = newUserName.textContent;
+  jobInput.value = newUserJob.textContent; 
+}); 
+popupOpenButtonAddImg.addEventListener('click', () => {
+  openPopup(popupAddImg);
+}); 
+
+//ОБЩАЯ ФУНКЦИЯ ЗАКРЫТИЯ ПОПАПОВ
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
 }
+
+const popups = document.querySelectorAll('.popup'); //Находим все попапы в проекте 
+  popups.forEach((popup) => { //выполняем для каждого один раз навешивание обработчика
+    popup.addEventListener('mousedown', (event) => {
+      if (event.target.classList.contains('popup_opened')) { //если есть класс открытия тогда закрываем
+        closePopup(popup)
+      }
+      if (event.target.classList.contains('popup__close')) {
+        closePopup(popup)
+      }
+    })
+  });
+  
+const popupProfile = document.querySelector('#userData'); //переменная всей формы
+const popup = popupProfile.querySelector('.popup__close');// переменная кнопки закрытия попапа редактирования профиля
 
 const closePopupByClickOnOverlay = function(event) { //функция закрытия попапа по клику вне области попапа
   if (event.target !== event.currentTarget) {
       return;
   } 
-  closePopupProfile();
+  closePopup(popupEditProfile);
 }
 
-popupOpenButtonElement.addEventListener('click', openPopupProfile); //на кнопку открытия попапа добавляем слушатель клика
-popupCloseButtonElement.addEventListener('click', closePopupProfile); //на кнопку закрытия попапа добавляем слушатель клика
 popupProfile.addEventListener('click', closePopupByClickOnOverlay); //добавляем слушатель клика вне попапа
 
-let formElement = document.querySelector('.popup__content'); // переменная внутри формы попапа
+const formElement = document.querySelector('.popup__content'); // переменная внутри формы попапа
 let nameInput = formElement.querySelector('#popupUserName'); // получаем значения введенные в поля имя и профессия
 let jobInput = formElement.querySelector('#popupUserJob');
 let newUserName = document.querySelector('.profile__name'); // получаем значения имени и професии со страницы
 let newUserJob = document.querySelector('.profile__job');
 
-function formSubmitHandler (evt) { // функция обработчик отправки форм
+function handlerFormSubmit (evt) { // функция обработчик отправки форм
     evt.preventDefault(); // отменяем все действия
     newUserName.textContent = nameInput.value; //текстовые значения на странице перезаписываются значениями из попапа
     newUserJob.textContent = jobInput.value;
-    closePopupProfile(); //попап закрывается
+    closePopup(popupEditProfile); //попап закрывается
 }
 
-  // КАРТОЧКИ
+// КАРТОЧКИ
   const cardsContainer = document.querySelector('.cards'); // переменная для всех карточек
   const cardTemplate = document.querySelector('#userCards').content.querySelector('.card'); //получаем доступ к шаблону temlate, добавляем атрибут content и выделяем узел card (получаем карточку)  
-
   const popupAddCard = document.querySelector('#userImg'); // переменная формы добавления карточек
-  const popupCloseButtonEddElement = popupAddCard.querySelector('.popup__close'); //кнопка закрытия попапа добавления карточек
-  const popupOpenButtonEddElement = document.querySelector('.profile__add-button'); //кнопка открытия попапа добавления крточек
-
   const popupUserLocation = document.querySelector('#popupUserLocation');  //значения новых названия и ссылки фотографий
   const popupUserLink = document.querySelector('#popupUserLink');
+  const formElementAdd = document.querySelector('#userImg');    // переменная формы добавления карточек
+  let locationInput = formElementAdd.querySelector('#popupUserLocation');  //получаем значения введенные пользователем
+  let linkInput = formElement.querySelector('#popupUserLink');
 
-formElement.addEventListener('submit', formSubmitHandler); // слушатель события для попапа, после срабатывания попап сохраняеться и закрывется 
-
-const openAddPopup = function() {  // функция открытия попапа добавления фотографий
-  popupAddCard.classList.add('popup_opened'); // добавляет класс попапу добавления фото
-}
-
- const closePopupAdd = function(event) {   // функция закрытия попапа добавления фотографий
-  popupAddCard.classList.remove('popup_opened');
-}
+formElement.addEventListener('submit', handlerFormSubmit); // слушатель события для попапа, после срабатывания попап сохраняеться и закрывется 
 
 const closePopupAddByClickOnOverlay = function(event) {  //функция закрытия попапа по клику вне области попапа
 if (event.target !== event.currentTarget) {
     return;
 } 
-closePopupAdd();
+closePopup(popupAddImg);
 }
 
   const popupSaveImg = popupAddCard.querySelector('#saveImg');
@@ -100,22 +112,13 @@ closePopupAdd();
     renderCard({name: popupUserLocation.value, link: popupUserLink.value});
     popupUserLocation.value = '';
     popupUserLink.value = '';
-    closePopupAdd();
+    closePopup(popupAddImg);
+    // не получилось реализовать очистку через .reset(); пытался вот так
+    // formElementAdd.reset();
   }
 
-  popupSaveImg.addEventListener('click', saveUserImg);
-
-
-popupOpenButtonEddElement.addEventListener('click', openAddPopup);   //на кнопку открытия попапа добавляем слушатель клика
-popupCloseButtonEddElement.addEventListener('click', closePopupAdd);  //на кнопку закрытия попапа добавляем слушатель клика
-popupAddCard.addEventListener('click', closePopupAddByClickOnOverlay);  //добавляем слушатель клика вне попапа
-
-
-  let formElementAdd = document.querySelector('#userImg');    // переменная формы добавления карточек
-  let locationInput = formElementAdd.querySelector('#popupUserLocation');  //получаем значения введенные пользователем
-  let linkInput = formElement.querySelector('#popupUserLink');
-
-
+  popupSaveImg.addEventListener('submit', saveUserImg);
+  popupAddCard.addEventListener('click', closePopupAddByClickOnOverlay);  //добавляем слушатель клика вне попапа
 
     const newCard = document.querySelector('#userCards');    // родительская карточка
 
@@ -129,9 +132,9 @@ popupAddCard.addEventListener('click', closePopupAddByClickOnOverlay);  //доб
 
     const popupImgViwer = document.querySelector('#viwerImg'); // переменная попапа просмотра картинок
     const formViwerImg = document.querySelector('#viwerImg');
-    const popupCloseButtonImgViwer = formViwerImg.querySelector('.popup__close'); //кнопка закрытия попапа просмотра картинок
     let bigImg = formViwerImg.querySelector('#bigImg');
     let imgName = formViwerImg.querySelector('#imgName');
+    let altImg = formViwerImg.querySelector('#imgName');
 
     const generateCard = (dataCard) => {  //генерация карточки
     const newCard = cardTemplate.cloneNode(true);    //клонируем крточки
@@ -147,14 +150,25 @@ popupAddCard.addEventListener('click', closePopupAddByClickOnOverlay);  //доб
     const likeButton = newCard.querySelector('.card__hart-button'); //Лайки
     likeButton.addEventListener('click', handleLikeCard);
 
-    const handleOpenImg = function() {  //функция открытия попапа
-      popupImgViwer.classList.add('popup_opened');
+    const popupOpenButtonViwerImg = newCard.querySelector('.card__image');
+    const popupViwerImg = document.querySelector('#viwerImg');
+    popupOpenButtonViwerImg.addEventListener('click', () => {
+      openPopup(popupViwerImg);
       bigImg.src = dataCard.link;
       imgName.textContent = dataCard.name;
-      }
+      bigImg.alt = dataCard.name;
+    });
 
-    const cardImgButton = newCard.querySelector('.card__image'); // Кнопка-картинка
-    cardImgButton.addEventListener('click', handleOpenImg);
+  const closePopupImgViwerByClickOnOverlay = function(event) {  //функция закрытия попапа по клику вне области попапа
+    if (event.target !== event.currentTarget) {
+        return;
+    } 
+    closePopup(popupViwerImg);
+    }
+
+  popupImgViwer.addEventListener('click', closePopupImgViwerByClickOnOverlay);  //добавляем слушатель клика вне попапа
+
+
 
     return newCard;
   }
@@ -169,19 +183,4 @@ popupAddCard.addEventListener('click', closePopupAddByClickOnOverlay);  //доб
     renderCard(dataCard);
   });
 
-
-
-  const closePopupImgViwer = function(event) {   // функция закрытия попапа добавления фотографий
-    popupImgViwer.classList.remove('popup_opened');
-  }
-
-  const closePopupImgViwerByClickOnOverlay = function(event) {  //функция закрытия попапа по клику вне области попапа
-    if (event.target !== event.currentTarget) {
-        return;
-    } 
-    closePopupImgViwer();
-    }
-
-  popupCloseButtonImgViwer.addEventListener('click', closePopupImgViwer);  //на кнопку закрытия попапа добавляем слушатель клика
-  popupImgViwer.addEventListener('click', closePopupImgViwerByClickOnOverlay);  //добавляем слушатель клика вне попапа
 

@@ -20,10 +20,10 @@
           <img class="profile__avatar" src="images/avatar.jpg" alt="аватар">
           <div class="profile__info">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button class="profile__edit-button link-design" type="button"></button>
+            <button class="profile__edit-button link-design" type="button" id="openButtonPopup"></button>
             <p class="profile__job">Исследователь океана</p>
           </div>
-          <button class="profile__add-button link-design" type="button"></button>
+          <button class="profile__add-button link-design" type="button" id="openButtonPopup"></button>
         </section>
      
         <section class="cards">
@@ -59,7 +59,7 @@
         <div class="popup__container">
           <button class="popup__close link-design" type="button"></button>
           <h2 class="popup__title">Новое место</h2>
-          <form class="popup__content" name="editProf">
+          <form class="popup__content" name="editImg">
             <input type="text" class="popup__user-data" id="popupUserLocation" name="location" value="" placeholder="Название">
             <input type="text" class="popup__user-data" id="popupUserLink" name="link" value="" placeholder="Ссылка на картинку">
             <button type="submit" class="popup__save link-design" id="saveImg">Сохранить</button>
