@@ -64,20 +64,11 @@ const popups = document.querySelectorAll('.popup'); //Находим все по
 const popupProfile = document.querySelector('#userData'); //переменная всей формы
 const popup = popupProfile.querySelector('.popup__close');// переменная кнопки закрытия попапа редактирования профиля
 
-const closePopupByClickOnOverlay = function(event) { //функция закрытия попапа по клику вне области попапа
-  if (event.target !== event.currentTarget) {
-      return;
-  } 
-  closePopup(popupEditProfile);
-}
-
-popupProfile.addEventListener('click', closePopupByClickOnOverlay); //добавляем слушатель клика вне попапа
-
 const formElement = document.querySelector('.popup__content'); // переменная внутри формы попапа
-let nameInput = formElement.querySelector('#popupUserName'); // получаем значения введенные в поля имя и профессия
-let jobInput = formElement.querySelector('#popupUserJob');
-let newUserName = document.querySelector('.profile__name'); // получаем значения имени и професии со страницы
-let newUserJob = document.querySelector('.profile__job');
+const nameInput = formElement.querySelector('#popupUserName'); // получаем значения введенные в поля имя и профессия
+const jobInput = formElement.querySelector('#popupUserJob');
+const newUserName = document.querySelector('.profile__name'); // получаем значения имени и професии со страницы
+const newUserJob = document.querySelector('.profile__job');
 
 function handlerFormSubmit (evt) { // функция обработчик отправки форм
     evt.preventDefault(); // отменяем все действия
@@ -93,17 +84,10 @@ function handlerFormSubmit (evt) { // функция обработчик отп
   const popupUserLocation = document.querySelector('#popupUserLocation');  //значения новых названия и ссылки фотографий
   const popupUserLink = document.querySelector('#popupUserLink');
   const formElementAdd = document.querySelector('#userImg');    // переменная формы добавления карточек
-  let locationInput = formElementAdd.querySelector('#popupUserLocation');  //получаем значения введенные пользователем
-  let linkInput = formElement.querySelector('#popupUserLink');
+  const locationInput = formElementAdd.querySelector('#popupUserLocation');  //получаем значения введенные пользователем
+  const linkInput = formElement.querySelector('#popupUserLink');
 
 formElement.addEventListener('submit', handlerFormSubmit); // слушатель события для попапа, после срабатывания попап сохраняеться и закрывется 
-
-const closePopupAddByClickOnOverlay = function(event) {  //функция закрытия попапа по клику вне области попапа
-if (event.target !== event.currentTarget) {
-    return;
-} 
-closePopup(popupAddImg);
-}
 
   const popupSaveImg = popupAddCard.querySelector('#saveImg');
   const formSaveImg = popupAddCard.querySelector('.popup__content');
@@ -116,7 +100,6 @@ closePopup(popupAddImg);
   }
 
   popupSaveImg.addEventListener('submit', saveUserImg);
-  popupAddCard.addEventListener('click', closePopupAddByClickOnOverlay);  //добавляем слушатель клика вне попапа
 
     const newCard = document.querySelector('#userCards');    // родительская карточка
 
@@ -130,9 +113,9 @@ closePopup(popupAddImg);
 
     const popupImgViwer = document.querySelector('#viwerImg'); // переменная попапа просмотра картинок
     const formViwerImg = document.querySelector('#viwerImg');
-    let bigImg = formViwerImg.querySelector('#bigImg');
-    let imgName = formViwerImg.querySelector('#imgName');
-    let altImg = formViwerImg.querySelector('#imgName');
+    const bigImg = formViwerImg.querySelector('#bigImg');
+    const imgName = formViwerImg.querySelector('#imgName');
+    const altImg = formViwerImg.querySelector('#imgName');
 
     const generateCard = (dataCard) => {  //генерация карточки
     const newCard = cardTemplate.cloneNode(true);    //клонируем крточки
@@ -156,17 +139,6 @@ closePopup(popupAddImg);
       imgName.textContent = dataCard.name;
       bigImg.alt = dataCard.name;
     });
-
-  const closePopupImgViwerByClickOnOverlay = function(event) {  //функция закрытия попапа по клику вне области попапа
-    if (event.target !== event.currentTarget) {
-        return;
-    } 
-    closePopup(popupViwerImg);
-    }
-
-  popupImgViwer.addEventListener('click', closePopupImgViwerByClickOnOverlay);  //добавляем слушатель клика вне попапа
-
-
 
     return newCard;
   }
