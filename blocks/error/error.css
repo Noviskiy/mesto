@@ -1,4 +1,4 @@
-.popup__error_visible {
+.error {
     font-size: 12px;
     line-height: 14px;
     color: #ff0000;
@@ -10,18 +10,18 @@
     top: 140px;
 }
 
-.popup__error_visible:last-of-type {
+.error:last-of-type {
     top: 197px;
 }
 
 @media screen and (max-width: 620px) {
-    .popup__error_visible {
+    .error {
         top: 148px;
     }
 }
 
 @media screen and (max-width: 620px) {
-    .popup__error_visible:last-of-type {
+    .error:last-of-type {
         top: 205px;
     }
 }
