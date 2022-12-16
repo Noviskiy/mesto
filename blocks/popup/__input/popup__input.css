@@ -1,4 +1,4 @@
-.popup__user-data {
+.popup__input {
     border: 0;
     width: 100%;
     box-sizing: content-box;
@@ -10,7 +10,11 @@
 }
 
 @media screen and (max-width: 620px) {
-    .popup__user-data {
+    .popup__input {
         padding-bottom: 8px;
     }
 }
+
+.popup__input_type_error {
+    border-bottom: 1px solid red;
+  }

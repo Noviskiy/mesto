@@ -47,10 +47,30 @@
         <div class="popup__container">
           <button class="popup__close link-design" type="button"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
-          <form class="popup__content" name="editProf">
-            <input type="text" class="popup__user-data" id="popupUserName" name="name" value="" placeholder="Имя">
-            <input type="text" class="popup__user-data" id="popupUserJob" name="job" value="" placeholder="Профессия">
-            <button type="submit" class="popup__save link-design">Сохранить</button>
+          <form class="popup__form" name="formEditProf" novalidate>
+            <input 
+              type="text" 
+              class="popup__input" 
+              id="popupUserName" 
+              name="name" 
+              value=""
+              minlength="2"
+              maxlength="40"
+              required 
+              placeholder="Имя">
+            <span id="popupUserName-error" class="popup__error_visible"></span>
+            <input 
+              type="text" 
+              class="popup__input" 
+              id="popupUserJob" 
+              name="job" 
+              value=""
+              minlength="2"
+              maxlength="200"
+              required 
+              placeholder="Профессия">
+            <span id="popupUserJob-error" class="popup__error_visible"></span>
+            <button type="submit" class="popup__button popup__button_valid link-design">Сохранить</button>
           </form>
         </div>
       </div>
@@ -59,10 +79,28 @@
         <div class="popup__container">
           <button class="popup__close link-design" type="button"></button>
           <h2 class="popup__title">Новое место</h2>
-          <form class="popup__content" name="editImg">
-            <input type="text" class="popup__user-data" id="popupUserLocation" name="location" value="" placeholder="Название">
-            <input type="text" class="popup__user-data" id="popupUserLink" name="link" value="" placeholder="Ссылка на картинку">
-            <button type="submit" class="popup__save link-design" id="saveImg">Сохранить</button>
+          <form class="popup__form" name="formEditImg" novalidate>
+            <input 
+              type="text" 
+              class="popup__input" 
+              id="popupUserLocation" 
+              name="location" 
+              value=""
+              minlength="2"
+              maxlength="30"
+              required 
+              placeholder="Название">
+            <span id="popupUserLocation-error" class="popup__error_visible"></span>
+            <input 
+              type="url" 
+              class="popup__input" 
+              id="popupUserLink" 
+              name="link" 
+              value="" 
+              required
+              placeholder="Ссылка на картинку">
+            <span id="popupUserLink-error" class="popup__error_visible"></span>
+            <button type="submit" class="popup__button popup__button_valid link-design" id="saveImg">Сохранить</button>
           </form>
         </div>
       </div>
@@ -76,5 +114,6 @@
       </div>
     </div>
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/enableValidation.js"></script>
   </body>
 </html>

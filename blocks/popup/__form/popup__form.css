@@ -1,4 +1,4 @@
-.popup__content {
+.popup__form {
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -7,7 +7,7 @@
 }
 
 @media screen and (max-width: 620px) {
-    .popup__content {
+    .popup__form {
         grid-gap: 32px;
     }
 }
