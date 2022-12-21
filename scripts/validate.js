@@ -24,7 +24,7 @@
       button.disabled = ''
     } else {
       button.classList.remove(config.activeButtonClass)
-      button.disabled = 'disabled'
+      button.disabled = false
     }
   }
      
