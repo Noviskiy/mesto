@@ -1,17 +1,15 @@
 .popup__button_valid {
-    margin-top: 19px;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 22px;
     color: #fff;
-    width: 100%;
-    padding-top: 14px;
-    padding-bottom: 15px;
-    background-color: #000;
+    background-color: #000000;
     cursor: pointer;
-    border-radius: 2px;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
     border: 0;
 }
+
+.popup__button_valid:hover {
+    opacity: 0.6;
+  }
 
 @media screen and (max-width: 620px) {
     .popup__button_valid {

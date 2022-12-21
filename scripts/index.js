@@ -65,24 +65,20 @@ popupOpenButtonAddImg.addEventListener('click', () => {  //закрытие по
 const popups = document.querySelectorAll('.popup'); //Находим все попапы в проекте 
 popups.forEach((popup) => { //выполняем для каждого один раз навешивание обработчика
   popup.addEventListener('mousedown', (event) => {
-    if (event.target.classList.contains('popup_opened')) { //если есть класс открытия тогда закрываем
-      closePopup(popup)
-    }
-    if (event.target.classList.contains('popup__close')) {
+    if (event.target.classList.contains('popup_opened') || event.target.classList.contains('popup__close')) { //если есть класс открытия тогда закрываем
       closePopup(popup)
     }
   })
 })
 
 const popupProfile = document.querySelector('#userData'); //переменная всей формы
-const popup = popupProfile.querySelector('.popup__close');// переменная кнопки закрытия попапа редактирования профиля
-const formElement = document.querySelector('.popup__form'); // переменная внутри формы попапа
-const nameInput = formElement.querySelector('#popupUserName'); // получаем значения введенные в поля имя и профессия
-const jobInput = formElement.querySelector('#popupUserJob');
+const formElementUserData = document.querySelector('.popup__form'); // переменная внутри формы попапа
+const nameInput = formElementUserData.querySelector('#popupUserName'); // получаем значения введенные в поля имя и профессия
+const jobInput = formElementUserData.querySelector('#popupUserJob');
 const newUserName = document.querySelector('.profile__name'); // получаем значения имени и професии со страницы
 const newUserJob = document.querySelector('.profile__job');
   
-function handlerFormSubmit (evt) { // функция обработчик отправки форм
+function handlersAllFormSubmit (evt) { // функция обработчик отправки форм
   evt.preventDefault(); // отменяем все действия
   newUserName.textContent = nameInput.value; //текстовые значения на странице перезаписываются значениями из попапа
   newUserJob.textContent = jobInput.value;
@@ -92,26 +88,29 @@ function handlerFormSubmit (evt) { // функция обработчик отп
 // КАРТОЧКИ
 const cardsContainer = document.querySelector('.cards'); // переменная для всех карточек
 const cardTemplate = document.querySelector('#userCards').content.querySelector('.card'); //получаем доступ к шаблону temlate, добавляем атрибут content и выделяем узел card (получаем карточку)  
-const popupAddCard = document.querySelector('#userImg'); // переменная формы добавления карточек
+const formAddCard = document.querySelector('#userImg'); // переменная формы добавления карточек
 const popupUserLocation = document.querySelector('#popupUserLocation');  //значения новых названия и ссылки фотографий
 const popupUserLink = document.querySelector('#popupUserLink');
 const formElementAdd = document.querySelector('#userImg');    // переменная формы добавления карточек
 const locationInput = formElementAdd.querySelector('#popupUserLocation');  //получаем значения введенные пользователем
-const linkInput = formElement.querySelector('#popupUserLink');
+const linkInput = formElementUserData.querySelector('#popupUserLink');
   
-formElement.addEventListener('submit', handlerFormSubmit); // слушатель события для попапа, после срабатывания попап сохраняеться и закрывется 
+formElementUserData.addEventListener('submit', handlersAllFormSubmit); // слушатель события для попапа, после срабатывания попап сохраняеться и закрывется 
   
-const popupSaveImg = popupAddCard.querySelector('#saveImg');
-const formSaveImg = popupAddCard.querySelector('.popup__form');
+const popupSaveImg = formAddCard.querySelector('#saveImg');
+const formSaveImg = formAddCard.querySelector('.popup__form');
+
   
 const saveUserImg = function(event) {  //функция обработчик события для кнопки сохранения
   event.preventDefault();
   renderCard({name: popupUserLocation.value, link: popupUserLink.value});
   closePopup(popupAddImg);
   formSaveImg.reset(); //очистка формы
+  event.submitter.disabled = true;
+  event.submitter.classList.remove('popup__button_valid');
 }
   
-popupSaveImg.addEventListener('submit', saveUserImg);
+formAddCard.addEventListener('submit', saveUserImg);
 const newCard = document.querySelector('#userCards');    // родительская карточка
 const handleDeleteCard = (event) => {  //функция удаления
   event.target.closest('.card').remove();
@@ -122,10 +121,8 @@ const handleLikeCard = (event) => {  //функция добавления кл�
 }
   
 const popupImgViwer = document.querySelector('#viwerImg'); // переменная попапа просмотра картинок
-const formViwerImg = document.querySelector('#viwerImg');
-const bigImg = formViwerImg.querySelector('#bigImg');
-const imgName = formViwerImg.querySelector('#imgName');
-const altImg = formViwerImg.querySelector('#imgName');
+const bigImg = popupImgViwer.querySelector('#bigImg');
+const imgName = popupImgViwer.querySelector('#imgName');
 
 const generateCard = (dataCard) => {  //генерация карточки
   const newCard = cardTemplate.cloneNode(true);    //клонируем крточки
@@ -138,11 +135,9 @@ const generateCard = (dataCard) => {  //генерация карточки
   recycleButton.addEventListener('click', handleDeleteCard);
   const likeButton = newCard.querySelector('.card__hart-button'); //Лайки
   likeButton.addEventListener('click', handleLikeCard);
-  const popupOpenButtonViwerImg = newCard.querySelector('.card__image');
-  const popupViwerImg = document.querySelector('#viwerImg');
 
-  popupOpenButtonViwerImg.addEventListener('click', () => {
-    openPopup(popupViwerImg);
+  newImage.addEventListener('click', () => {
+    openPopup(popupImgViwer);
     bigImg.src = dataCard.link;
     imgName.textContent = dataCard.name;
     bigImg.alt = dataCard.name;
@@ -154,7 +149,7 @@ const renderCard = (dataCard) => {    // добавление карточки
   cardsContainer.prepend(generateCard(dataCard)); 
 };
   
-popupAddCard.addEventListener('submit', saveUserImg);  // слушатель нажатия кнопки сохранения
+formAddCard.addEventListener('submit', saveUserImg);  // слушатель нажатия кнопки сохранения
   
 initialCards.forEach((dataCard) => {
   renderCard(dataCard);

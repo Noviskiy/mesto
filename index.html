@@ -70,7 +70,7 @@
               required 
               placeholder="Профессия">
             <span id="popupUserJob-error" class="error"></span>
-            <button type="submit" class="popup__button popup__button_valid link-design">Сохранить</button>
+            <button type="submit" class="popup__button" disabled>Сохранить</button> 
           </form>
         </div>
       </div>
@@ -100,12 +100,12 @@
               required
               placeholder="Ссылка на картинку">
             <span id="popupUserLink-error" class="error"></span>
-            <button type="submit" class="popup__button popup__button_valid link-design" id="saveImg">Сохранить</button>
+            <button type="submit" class="popup__button popup__button_invalid" id="saveImg" disabled>Сохранить</button>
           </form>
         </div>
       </div>
-
-      <div class="popup" id="viwerImg">
+      
+      <div class="popup popup_eclipse" id="viwerImg">
         <div class="popup__img-container">
           <button class="popup__close link-design" type="button"></button>
           <img class="popup__img-big" src="#" alt="" id="bigImg">
@@ -114,6 +114,6 @@
       </div>
     </div>
     <script src="./scripts/index.js"></script>
-    <script src="./scripts/enableValidation.js"></script>
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>
