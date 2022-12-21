@@ -2,14 +2,19 @@
 
  const checkInputValidity = (input, config) => {  // функция проверки валидности инпутов
   const error = document.querySelector(`#${input.id}-error`)
-  if(input.validity.valid) { 
-    error.textContent = ''
-    input.classList.remove(config.inputErrorClass)  //error.classList.remove(config.errorClass)
-  } else {
+  if(!input.validity.valid) { 
     error.textContent = input.validationMessage
     error.classList.add(config.errorClass)
     input.classList.add(config.inputErrorClass)
     }
+  }
+
+  const deletErrMassage = (input, config) => { //функция очистки ошибки
+    const error = document.querySelector(`#${input.id}-error`)
+    if(input.validity.valid) { 
+      error.textContent = ''
+      input.classList.remove(config.inputErrorClass)
+    } 
   }
     
   const toggleButtonState = (inputs, button, config) => {
@@ -34,6 +39,7 @@
       inputs.forEach(input => {
         input.addEventListener('input', () => {
           checkInputValidity(input, config)
+          deletErrMassage(input, config)
           toggleButtonState(inputs, button, config)
         })
       })
