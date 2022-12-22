@@ -1,20 +1,24 @@
  //ВАЛИДАЦИЯ
 
- const checkInputValidity = (input, config) => {  // функция проверки валидности инпутов
+ const showInputError = (input, config) => {
   const error = document.querySelector(`#${input.id}-error`)
-  if(!input.validity.valid) { 
-    error.textContent = input.validationMessage
-    error.classList.add(config.errorClass)
-    input.classList.add(config.inputErrorClass)
-    }
-  }
+  error.textContent = input.validationMessage
+  error.classList.add(config.errorClass)
+  input.classList.add(config.inputErrorClass)
+};
 
-  const deletErrMassage = (input, config) => { //функция очистки ошибки
-    const error = document.querySelector(`#${input.id}-error`)
-    if(input.validity.valid) { 
-      error.textContent = ''
-      input.classList.remove(config.inputErrorClass)
-    } 
+const hideInputError = (input, config) => {
+  const error = document.querySelector(`#${input.id}-error`)
+  error.textContent = ''
+  input.classList.remove(config.inputErrorClass)
+};
+
+const checkInputValidity = (input, config) => {
+  if(!input.validity.valid) { 
+    showInputError(input, config)
+    } else {
+      hideInputError(input, config)
+    }
   }
     
   const toggleButtonState = (inputs, button, config) => {
@@ -24,7 +28,7 @@
       button.disabled = ''
     } else {
       button.classList.remove(config.activeButtonClass)
-      button.disabled = false
+      button.disabled = true
     }
   }
      
@@ -33,13 +37,9 @@
     forms.forEach(form => {
       const inputs = [...form.querySelectorAll(config.inputSelector)]
       const button = form.querySelector(config.submitButtonSelector)
-      form.addEventListener('submit', (event) => {
-        event.preventDefault()
-      })
       inputs.forEach(input => {
         input.addEventListener('input', () => {
           checkInputValidity(input, config)
-          deletErrMassage(input, config)
           toggleButtonState(inputs, button, config)
         })
       })

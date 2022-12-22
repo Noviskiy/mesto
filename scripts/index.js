@@ -78,7 +78,7 @@ const jobInput = formElementUserData.querySelector('#popupUserJob');
 const newUserName = document.querySelector('.profile__name'); // получаем значения имени и професии со страницы
 const newUserJob = document.querySelector('.profile__job');
   
-function handlersAllFormSubmit (evt) { // функция обработчик отправки форм
+function handlerUserDataForm (evt) { // функция обработчик отправки форм
   evt.preventDefault(); // отменяем все действия
   newUserName.textContent = nameInput.value; //текстовые значения на странице перезаписываются значениями из попапа
   newUserJob.textContent = jobInput.value;
@@ -95,7 +95,7 @@ const formElementAdd = document.querySelector('#userImg');    // перемен�
 const locationInput = formElementAdd.querySelector('#popupUserLocation');  //получаем значения введенные пользователем
 const linkInput = formElementUserData.querySelector('#popupUserLink');
   
-formElementUserData.addEventListener('submit', handlersAllFormSubmit); // слушатель события для попапа, после срабатывания попап сохраняеться и закрывется 
+formElementUserData.addEventListener('submit', handlerUserDataForm); // слушатель события для попапа, после срабатывания попап сохраняеться и закрывется 
   
 const popupSaveImg = formAddCard.querySelector('#saveImg');
 const formSaveImg = formAddCard.querySelector('.popup__form');
@@ -111,7 +111,6 @@ const saveUserImg = function(event) {  //функция обработчик с�
 }
   
 formAddCard.addEventListener('submit', saveUserImg);
-const newCard = document.querySelector('#userCards');    // родительская карточка
 const handleDeleteCard = (event) => {  //функция удаления
   event.target.closest('.card').remove();
 }
